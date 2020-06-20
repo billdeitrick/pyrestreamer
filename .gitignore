@@ -1,0 +1,20 @@
+# Config files with secrets
+.env
+logging.yml
+
+# Python artifacts
+__pycache__
+.pyc
+.venv
+.mypy_cache
+.pytest_cache
+
+# Logs
+logs/*.log
+
+# Testing stuff
+ffmpeg_commandline.txt
+gstreamer.txt
+
+# Keep vscode stuff
+!.vscode

@@ -1,0 +1,8 @@
+version: '3.6'
+services:
+    pyrestreamer:
+        build: .
+        env_file: .env
+        restart: unless-stopped
+        volumes:
+            - ./logging.yml:/opt/app/logging.yml

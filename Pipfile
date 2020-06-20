@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+freezegun = "*"
+pytest = "*"
+mypy = "*"
+pytest-freezegun = "*"
+
+[packages]
+pyyaml = "*"
+python-pushover = "*"
+pytz = "*"
+freezegun = "*"
+
+[requires]
+python_version = "3.8"

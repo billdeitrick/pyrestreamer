@@ -1,0 +1,1 @@
+from pyrestreamer.__main__ import run

@@ -1,0 +1,34 @@
+---
+    version: 1
+    formatters:
+      verbose:
+        format: "%(levelname)8s  %(asctime)s  [%(module)s|%(lineno)d]  %(message)s"
+      simple:
+        format: "%(levelname)8s >> %(message)s"
+      mail:
+        format: |-
+          PyReStreamer Alert
+    
+          Info:
+          %(levelname)5s  %(asctime)s  [%(module)s|%(lineno)d]
+    
+          Message:
+          %(message)s
+    filters: {}
+    handlers:
+      console:
+        level: INFO
+        class: logging.StreamHandler
+        formatter: simple
+      pushover:
+        class: pyrestreamer.helpers.PushoverHandler
+        formatter: mail
+        level: WARNING
+        user_key: my_key
+        api_token: my_token
+    loggers:
+      pyrestreamer:
+        handlers:
+        - console
+        level: DEBUG
+    
