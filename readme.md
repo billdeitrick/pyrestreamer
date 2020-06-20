@@ -11,8 +11,7 @@ This app was specifically built to automate restreaming from [Living as One](htt
 PyReStreamer is designed to be deployed in a Docker container. As such, you'll need a host running Docker Engine to get started. Once you've got that up and running, these steps will get you started:
 
 1. Pull the image from Docker Hub: `docker pull billdeitrick/pyrestreamer`
-1. Copy the sample .env and logging.yml files to your Docker host. I generally put them in `/opt/pyrestreamer`.
-1. Copy the sample [.env](https://github.com/billdeitrick/pyrestreamer/blob/master/sample.env) and [logging.yml](https://github.com/billdeitrick/pyrestreamer/blob/master/logging-sample.yml) files and edit according to your requirements. The .env file is fairly well documented, and the logging.yml file is configured for suitable Docker defaults. [PushOver](https://pushover.net/) support is built in (in example file) if you are a PushOver user. Otherwise, you can learn more about logging options in the Python [docs](https://docs.python.org/3/howto/logging.html).
+1. Copy the sample [.env](https://github.com/billdeitrick/pyrestreamer/blob/master/sample.env) and [logging.yml](https://github.com/billdeitrick/pyrestreamer/blob/master/logging-sample.yml) files and edit according to your requirements. The .env file is fairly well documented, and the logging.yml file is configured for suitable Docker defaults. [PushOver](https://pushover.net/) support is built in (in example file) if you are a PushOver user. Otherwise, you can learn more about logging options in the Python [docs](https://docs.python.org/3/howto/logging.html). Generally I prefer to drop them in `/opt/pyrestreamer` on my Docker host.
 1. Start the container; here's an example command:
 
 ```bash
