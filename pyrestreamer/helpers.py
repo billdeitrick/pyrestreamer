@@ -268,8 +268,12 @@ class ReStreamer():
 
         for row in ffmpeg_output:
             if "=" in row:
-                k,v = row.split('=')
-                status_output[k] = v.strip()
+                split = [item for item in row.split('=') if len(item) > 0]
+
+                if len(split) == 2:
+                    status_output[split[0].strip()] = split[1].strip()
+                else:
+                    standard_output.append(row)
             else:
                 standard_output.append(row)
 

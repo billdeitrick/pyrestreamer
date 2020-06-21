@@ -212,3 +212,32 @@ class TestRestreamer():
         )
 
         assert exp_output == ReStreamer.parse_ffmpeg_output(fn_input)
+
+    def test_parse_ffmpeg_output_unexpected(self):
+        """Test the ffmpeg output parsing function."""
+
+        fn_input = [
+            "[cli][info] Available streams: 144p (worst), 270p, 360p, 540p, 720p, 1080p (best)",
+            "[cli][info] Opening stream: 1080p (dash)",
+            "Input #0, matroska,webm, from 'pipe:':",
+            "unexpected=",
+            "=unexpected",
+            "unexpected=unexpected=unexpected",
+            "out_time_ms=512000",
+        ]
+
+        exp_output = (
+            [
+                "[cli][info] Available streams: 144p (worst), 270p, 360p, 540p, 720p, 1080p (best)",
+                "[cli][info] Opening stream: 1080p (dash)",
+                "Input #0, matroska,webm, from 'pipe:':",
+                "unexpected=",
+                "=unexpected",
+                "unexpected=unexpected=unexpected",
+            ],
+            {
+                'out_time_ms': '512000',
+            }
+        )
+
+        assert exp_output == ReStreamer.parse_ffmpeg_output(fn_input)
