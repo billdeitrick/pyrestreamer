@@ -15,5 +15,5 @@ PyReStreamer is designed to be deployed in a Docker container. As such, you'll n
 1. Start the container; here's an example command:
 
 ```bash
-docker run --name pyrestreamer --restart unless-stopped --env-file /path/to/.env -v /path/to/logging.yml:/opt/app/logging.yml billdeitrick/pyrestreamer
+docker run -d --name pyrestreamer --restart unless-stopped --env-file /path/to/.env -v /path/to/logging.yml:/opt/app/logging.yml billdeitrick/pyrestreamer
 ```
