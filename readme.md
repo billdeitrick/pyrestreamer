@@ -1,5 +1,7 @@
 # PyReStreamer
 
+> Warning: This project is in "Alpha" status and is being updated frequently with breaking changes.
+
 PyRestreamer is a simple app built with [FFMPEG](https://ffmpeg.org/), [Streamlink](https://streamlink.github.io/), [Docker](https://www.docker.com/), and [Python](https://www.python.org/) to re-stream video content from DASH or HLS streams to RTMP. One possible use case is to allow re-broadcasting content from sources that only provide DASH or HLS endpoints to other services and endpoints that require RTMP.
 
 The general idea is that you specify the times you would like to be actively re-streaming, and then PyReStreamer will automatically start streaming at the specified time and stop after the specified duration. FFMPEG is used under the hood, so you can output anything supported by FFMPEG.
