@@ -161,7 +161,7 @@ class ReStreamer():
                     log.debug("Starting streaming.")
 
                     proc = subprocess.Popen(
-                        f"streamlink {self.input_url} best -O | ffmpeg -progress - -nostats -hide_banner -re -i - {self.ffmpeg_params}",
+                        f"streamlink -l debug {self.input_url} best -O| ffmpeg -progress - -nostats -hide_banner -re -i - {self.ffmpeg_params}",
                         stdout=subprocess.PIPE,
                         stderr=subprocess.STDOUT,
                         shell=True,
@@ -222,9 +222,12 @@ class ReStreamer():
 
                 standard_out, status_out = ReStreamer.parse_ffmpeg_output(lines)
 
-                if had_status_out and standard_out:
-                    log.warning(f"Unexpected output from ffmpeg proc: {'##'.join(standard_out)}")
-                elif standard_out:
+                # Temp change to info status for debugging
+                # if had_status_out and standard_out:
+                #     log.warning(f"Unexpected output from ffmpeg proc: {'##'.join(standard_out)}")
+                # elif standard_out:
+                #     log.info(f"FFMPEG proc output: {'##'.join(standard_out)}")
+                if standard_out:
                     log.info(f"FFMPEG proc output: {'##'.join(standard_out)}")
 
                 if 'total_size' in status_out:
