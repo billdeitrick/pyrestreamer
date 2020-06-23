@@ -1,4 +1,5 @@
 import os
+import sys
 import logging
 import logging.config
 import datetime
@@ -56,7 +57,8 @@ def run():
         try:
             rs.event_loop()
         except Exception as e:
-            log.critical(f'Fatal error running app: {e}')
+            log.critical(f'Fatal error running app (will exit to prompt container restart): {e}')
+            sys.exit(1)
 
 if __name__ == '__main__':
     run()
