@@ -44,12 +44,4 @@
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "vscode"
 
-	"mounts": [
-		"../scripts:/opt/scripts"
-	],
-
-	"runArgs": [
-		"--entrypoint",
-		"/bin/sh -c \"while sleep 1000; do :; done\""
-	]
 }
