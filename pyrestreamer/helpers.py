@@ -228,6 +228,10 @@ class ReStreamer():
                     if segment_timeouts:
                         log.info(f"Segment timeouts: {'##'.join(segment_timeouts)}")
 
+                    if [line for line in standard_out if line.startswith('[stream.ffmpegmux][error] Pipe copy aborted:')]:
+                        log.critical(f"Pipe died. Forcing container restart: {'##'.join(standard_out)}")
+                        sys.exit(1)
+
                     standard_out = [line for line in standard_out if not line.startswith('[stream.dash][error] Failed to open segment')]
 
                     if standard_out:
