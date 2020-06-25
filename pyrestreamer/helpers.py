@@ -175,7 +175,7 @@ class ReStreamer():
                     current_state = StreamingState.STREAMING
 
                     log.warning("PyRestreamer has started streaming.")
-                    
+
                 elif current_state is StreamingState.STREAMING:
                     log.debug("Service ended. We should stop streaming.")
 
@@ -223,13 +223,24 @@ class ReStreamer():
                 standard_out, status_out = ReStreamer.parse_ffmpeg_output(lines)
 
                 if had_status_out and standard_out:
-                    log.warning(f"Unexpected output from ffmpeg proc: {'##'.join(standard_out)}")
+                    segment_timeouts = [line for line in standard_out if line.startswith('[stream.dash][error] Failed to open segment')]
+
+                    if segment_timeouts:
+                        log.info(f"Segment timeouts: {'##'.join(segment_timeouts)}")
+
+                    standard_out = [line for line in standard_out if not line.startswith('[stream.dash][error] Failed to open segment')]
+
+                    if standard_out:
+                        log.warning(f"Unexpected output from ffmpeg proc: {'##'.join(standard_out)}")
+
                 elif standard_out:
                     log.info(f"FFMPEG proc output: {'##'.join(standard_out)}")
 
                 if 'total_size' in status_out:
                     had_status_out = True
                     total_size = int(status_out['total_size'])
+                    
+                    log.debug(f"Total output size: {total_size}")
 
                     if total_size > last_ts:
                         last_ts = total_size
