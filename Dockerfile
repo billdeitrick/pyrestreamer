@@ -5,7 +5,7 @@ WORKDIR /opt/app
 COPY pyrestreamer pyrestreamer
 COPY Pipfile Pipfile
 COPY Pipfile.lock Pipfile.lock
-COPY run.sh run.sh
+COPY boot.sh boot.sh
 COPY run.py run.py
 
 RUN apt-get update
